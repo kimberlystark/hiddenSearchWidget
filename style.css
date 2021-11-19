@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(90deg, #988bd8, #46378b);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.search {
+  /* so we can position things inside of it absolute */
+  position: relative;
+  height: 50px;
+}
+
+.search .input {
+  background-color: white;
+  border: 0;
+  font-size: 18px;
+  padding: 15px;
+  height: 50px;
+  width: 50px;
+  /* its going to start off short like this but then we will have a transition to expand it */
+  flex-direction: column;
+  /* we want the transition on the width */
+  transition: width 0.3s ease;
+}
+
+.btn {
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  font-size: 24px;
+  /* position absolute inside of the .search.input */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  /* the input gets wider and here, the button moves over, so we use transform */
+  transition: transform 0.3s ease;
+}
+
+.btn:focus,
+.input:focus {
+  outline: none;
+}
+
+/* if the search class is active, then we want the input to grow to a bigger width */
+.search.active .input {
+  width: 200px;
+}
+
+/* when search is active, then we want to take the button and move it over to the right on the x axis */
+.search.active .btn {
+  transform: translateX(198px);
+}
